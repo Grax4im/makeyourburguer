@@ -10,7 +10,9 @@
 
 export default {
     name: "Message",
-    props: ["msg", "v-form"],
+    props: {
+        msg: String
+    }
 }
 </script>
 

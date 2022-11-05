@@ -22,9 +22,9 @@
                     </div>
                     <div>
                         <select name="status" class="status">
-                            <option value="">Selecione:</option>
+                            <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">{{s.tipo}}</option>
                         </select>
-                        <button class="delete-btn">Cancelar</button>
+                        <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -43,20 +43,31 @@
         },
         methods: {
             async getPedidos() {
-
                 const req = await fetch("http://localhost:3000/burgers")
-
                 const data = await req.json();
-
                 this.burgers = data;
+            },
 
-                console.log(this.burgers);
-                //resgatar os status
+        async getStatus() {
+                const req = await fetch("http://localhost:3000/status")
+                const data = await req.json();
+                this.status = Array.from(data);
+            },
+
+        async deleteBurger(id) {
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: "DELETE"
+            });
+            const res = await req.json();
+
+            //msg
+
+            this.getPedidos();
             }
         },
         mounted() {
             this.getPedidos();
-            
+            this.getStatus();
         }
     }
 </script>

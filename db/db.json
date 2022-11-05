@@ -102,34 +102,6 @@
       "id": 4
     },
     {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 7
-    },
-    {
-      "nome": "Robert",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 8
-    },
-    {
       "nome": "Porão Freak",
       "carne": "Maminha",
       "pao": "Parmesão e Orégano",
@@ -150,14 +122,6 @@
       ],
       "status": "Solicitado",
       "id": 10
-    },
-    {
-      "nome": "Joaquina",
-      "carne": "Maminha",
-      "pao": "Parmesão e Orégano",
-      "opcionais": [],
-      "status": "Solicitado",
-      "id": 11
     }
   ]
 }

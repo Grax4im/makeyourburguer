@@ -57,7 +57,20 @@
                 const data = await req.json();
                 this.burgers = data;
             },
-
+            setMessage(id, status = null) {
+                if(status == null) {
+                    this.msg = `Pedido ${id} removido com  sucesso`
+                    setTimeout(() => {
+                        this.msg = ""
+                    }, 3000);
+                }
+                else {
+                    this.msg = `Pedido ${id} atualizado para ${status}!`
+                    setTimeout(() => {
+                        this.msg = ""
+                    }, 3000);
+                }
+            },
         async getStatus() {
                 const req = await fetch("http://localhost:3000/status")
                 const data = await req.json();
@@ -69,14 +82,9 @@
                 method: "DELETE"
             });
             const res = await req.json();
-
-            
-            this.msg = `Pedido ${id} removido com  sucesso`
-            setTimeout(() => {
-                this.msg = ""
-            }, 3000);
-
+            this.setMessage(id);
             this.getPedidos();
+
         },
         async updateBurger(event, id) {
             const option = event.target.value;
@@ -86,13 +94,8 @@
                 headers: {"Content-Type": "application/json"},
                 body: dataJson
             });
-
             const res = await req.json();
-
-            this.msg = `Pedido ${id} atualizado para ${res.status}!`
-            setTimeout(() => {
-                this.msg = ""
-            }, 3000);
+            this.setMessage(id, res.status);
         }
         },
         mounted() {
